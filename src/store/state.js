@@ -4,9 +4,7 @@ export default {
         dark: false,
         loading: false
     },
-    usuario: {
-        currentUser: null
-    },
+    usuario: null,
     tarefaState: {
         tarefa: null,
         tarefas: [],
