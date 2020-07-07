@@ -1,32 +1,48 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="inspire" :dark="setTheme">
+    <Menu />
+    <AppBar />
+    <Content />
+    <Footer />
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["appConfig"]),
+    setTheme() {
+      if (this.appConfig.dark == true) {
+        return (this.$vuetify.theme.dark = true);
+      } else {
+        return (this.$vuetify.theme.dark = false);
+      }
+    }
+  },
+  components: {
+    Menu: () => import("./components/layout/Menu"),
+    AppBar: () => import("./components/layout/AppBar"),
+    Content: () => import("./components/layout/Content"),
+    Footer: () => import("./components/layout/Footer")
+  }
+};
+</script>
+
+<style lang="scss">
+@import "@/styles/index.scss";
+
+html {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-#nav {
-  padding: 30px;
+body {
+  margin: 0;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.v-datatable thead th.column.sortable i {
+  vertical-align: unset;
 }
 </style>

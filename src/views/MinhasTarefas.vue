@@ -1,14 +1,17 @@
 <template>
   <v-container grid-list-xl>
-    <PageTitle main="Home" sub="Bem-vindo ao Listodo" icon="mdi-home" />
+    <PageTitle main="Minhas tarefas" sub="Gerencie as suas tarefas" icon="mdi-star" />
   </v-container>
 </template>
 
 <script>
 export default {
-  name: "Home",
+  name: "MinhasTarefas",
   components: {
     PageTitle: () => import("../components/layout/PageTitle")
   }
 };
 </script>
+
+<style>
+</style>
